@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>已借书籍</title>
+</head>
+<body>
+	<h3>书籍</h3>
+	<table>
+	<tr>
+		<td>书名</td>
+		<td>作者</td>
+		<td>已借</td>
+		<td>时间</td>
+	</tr>
+	<tr th:each="record:${record}">
+		<td th:text=${record.bookName}></td>
+		<td th:text=${record.bookAuthor}></td>
+		<td th:text=${record.quantity}></td>
+		<td th:text=${record.borrowTime}></td>
+	</tr>
+	</table>
+</body>
+</html>

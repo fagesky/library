@@ -1,0 +1,47 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.fogsky.library.mapper.BookMapper">
+	<cache></cache>
+	<insert id="insertBook">
+		insert into books(name,author,quantity,quantity_can_borrow) value(#{name},#{author},#{quantity},#{quantityCanBorrow})
+	</insert>
+	<select id="selectAllOrBy" resultType="book">
+		select * from books
+		<where>
+		<choose>
+		<when test="id!=null">
+		id=#{id}
+		</when>
+		<when test="name!=null">
+		name=#{name}
+		</when>
+		</choose>
+		</where>
+		
+	</select>
+	<select id="selectById" resultType="book">
+		select * from books where id=#{id}
+	
+	</select>
+	<update id="updateBook">
+		update books
+		<set>
+		<if test="name!=null">
+			name=#name},
+		</if>
+		<if test="author!=null">
+			author=#{author},
+		</if>
+		<if test="quantity!=0">
+			quantity=#{quantity},
+		</if>
+		<if test="quantityCanBorrow>=0">
+			quantity_can_borrow=#{quantityCanBorrow}
+		</if>
+		</set>
+		where id=#{id}
+	</update>
+
+</mapper>

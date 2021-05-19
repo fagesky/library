@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "user.name-size",
+    "type": "java.lang.String",
+    "description": "A description for 'user.name-size'"
+  },
+  {
+    "name": "user.password-size",
+    "type": "java.lang.String",
+    "description": "A description for 'user.password-size'"
+  }
+]}

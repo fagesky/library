@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h3>用户注册系统</h3>
+	<table>
+	<tr>
+	请键入用户信息
+	</tr>
+	</table>
+	<form th:action="@{/adduser}" method="post">
+		<fieldset>
+			<td>用户名：	  </td><input type="text" name="name"><br>
+			<td>性别：	  </td><input type="number" name="gender"><br>
+			<td>密码：	  </td><input type="password" name="password"><br>
+			<input type="submit" value="提交">
+		</fieldset>
+	</form>
+</body>
+</html>

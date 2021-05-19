@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="org.fogsky.library.mapper.LendRecordMapper">
+    <insert id="insertLendRecord">
+    	insert into user_borrowedbook_list select id,#{bookId},#{quantity},CurDate() from user where name=#{userName}
+    </insert>
+    <select id="selectLendRecordByUserNameOrAndByBookId" resultType="lendRecord">
+    	select book_id,quantity,borrow_time from user_borrowedbook_list 
+    		where user_id=( select id from user where name=#{userName})
+    		<if test="bookId!=0">
+    			and book_id=#{bookId}
+    		</if>
+    </select>
+    <update id="updateLendRecord">
+    	update user_borrowedbook_list set quantity=#{quantity} where user_id=(select id from user where name=#{userName}) and
+    		book_id=#{bookId}
+    </update>
+    </mapper>

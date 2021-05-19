@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h3>图书录入系统</h3>
+	<table>
+	<tr>
+	请键入图书信息
+	</tr>
+	</table>
+	<form th:action="@{/addbook}" method="post">
+		<fieldset>
+			<td>书名：	  </td><input type="text" name="name" th:placeholder="${book}!=null ? ${book.name}"><br>
+			<td>作者：	  </td><input type="text" name="author" th:value="${book}!=null ? ${book.author}"><br>
+			<td>藏书数量： </td><input type="number" name="quantity" th:placeholder="${book}!=null ? ${book.quantity}"><br>
+			<td>可借：        </td><input type="number" name="quantityCanBorrow" th:placeholder="${book}!=null ? ${book.quantityCanBorrow}"><br>
+			<input type="submit" value="提交">
+		</fieldset>
+	</form>
+</body>
+</html>

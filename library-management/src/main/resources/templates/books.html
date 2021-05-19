@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>书籍</h3>
+	<table>
+	<tr>
+		<td>书名</td>
+		<td>作者</td>
+		<td>总数</td>
+		<td>可借</td>
+		<td>操作</td>
+		<td>借书</td>
+	</tr>
+	<tr th:each="book:${books}">
+		<td th:text=${book.name}></td>
+		<td th:text=${book.author}>${book.author }</td>
+		<td th:text=${book.quantity}>${book.quantity}</td>
+		<td th:text=${book.quantityCanBorrow}>${book.quantityCanBorrow }</td>
+		<td><a href="${path}/addbook?id=${book.id}" th:href="@{/addbook(id=${book.id})}">编辑</a></td>
+		<td><a th:href="@{/borrowbook/{id}(id=${book.id})}">借阅</a></td>
+	</tr>
+	</table>
+</body>
+</html>
